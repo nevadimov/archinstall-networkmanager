@@ -183,7 +183,7 @@ def ask_user_questions():
 
 	# Additional packages (with some light weight error handling for invalid package names)
 	if not archinstall.arguments.get('packages', None):
-		archinstall.arguments['packages'] = [package for package in input('Write additional packages to install (space separated, leave blank to skip): ').split(' ') if len(package)]
+		archinstall.arguments['packages'] = [package for package in input('networkmanager').split(' ') if len(package)]
 
 	# Verify packages that were given
 	try:
@@ -318,9 +318,7 @@ def perform_installation(device, boot_partition, language, mirrors):
 			# Otherwise, if a interface was selected, configure that interface
 			elif archinstall.arguments.get('nic', None):
 				installation.configure_nic(**archinstall.arguments.get('nic', {}))
-				installation.enable_service('systemd-networkd')
-				installation.enable_service('systemd-resolved')
-
+				installation.enable_service('NetworkManager')
 
 			if archinstall.arguments.get('packages', None) and archinstall.arguments.get('packages', None)[0] != '':
 				installation.add_additional_packages(archinstall.arguments.get('packages', None))

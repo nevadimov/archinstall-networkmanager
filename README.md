@@ -1,1 +1,2 @@
 # archinstall-networkmanager
+DEPRECATED
